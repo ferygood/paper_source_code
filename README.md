@@ -1,6 +1,6 @@
 # Paper title
 
-`![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)`
+![](https://img.shields.io/badge/r-%23276DC3.svg?style=plastic&logo=r&logoColor=white)
 
 This repo including the analysis code in the paper, \_\_\_\_\_. You can refer to the script based on the description below.
 
