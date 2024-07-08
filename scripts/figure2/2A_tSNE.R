@@ -19,7 +19,7 @@ read_rds_files <- function(file_path){
     }
 }
 
-folder_path <- "../paper_source_code/data/results_rdata/"
+folder_path <- "../../paper_source_code/data/results_rdata/"
 read_rds_files(folder_path)
 
 # create a metadata for labeling sample
