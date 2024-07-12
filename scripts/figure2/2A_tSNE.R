@@ -169,9 +169,9 @@ g1 <- ggplot(tsne_index, aes(x=`t-SNE1`, y=`t-SNE2`)) +
     scale_fill_manual(values=c("red", "blue", "purple", "darkgreen")) +
     labs(fill = "")
 
-ggsave(g1, filename="figures/SVG/PBD_tSNE_species.svg",
+ggsave(g1, filename="figures/SVG/2A_PBD_tSNE_species.svg",
        dpi=400, width=7, height=5, bg="white")
-ggsave(g1, filename="figures/JPG/PBD_tSNE_species.jpg",
+ggsave(g1, filename="figures/JPG/2A_PBD_tSNE_species.jpg",
        dpi=400, width=7, height=5, bg="white")
 
 
@@ -181,8 +181,8 @@ g2 <- ggplot(tsne_index, aes(x=`t-SNE1`, y=`t-SNE2`)) +
     scale_fill_manual(values=c("#ff9a85", "#e3c678", "#b07ff3", "#afdb72", "#656662", "#5adfd7", "#3d70ca")) +
     labs(fill = "")
 
-ggsave(g2, filename="figures/SVG/PBD_tSNE_region.svg",
+ggsave(g2, filename="figures/SVG/2A_PBD_tSNE_region.svg",
        dpi=400, width=7, height=5, bg="white")
-ggsave(g2, filename="figures/JPG/PBD_tSNE_region.jpg",
+ggsave(g2, filename="figures/JPG/2A_PBD_tSNE_region.jpg",
        dpi=400, width=7, height=5, bg="white")
 
