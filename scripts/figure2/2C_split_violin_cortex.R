@@ -66,5 +66,5 @@ te_cortex_v <- ggplot(te_cortex, aes(x=species, y=value, fill=age)) +
 cortex <- ggarrange(kznf_cortex_v, te_cortex_v, ncol=1,
                     common.legend = TRUE, legend = "bottom")
 
-ggsave(filename="figures/JPG/kznfs_TEs_violin_cortex.jpg", dpi=500, width=7, height=9)
-ggsave(filename="figures/SVG/kznfs_TEs_violin_cortex.svg", dpi=500, width=7, height=9)
+ggsave(filename="figures/JPG/2C_kznfs_TEs_violin_cortex.jpg", dpi=500, width=7, height=9)
+ggsave(filename="figures/SVG/2C_kznfs_TEs_violin_cortex.svg", dpi=500, width=7, height=9)

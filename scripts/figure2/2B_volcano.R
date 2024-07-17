@@ -20,8 +20,6 @@ HmPtC1_resTE <- HmPtC1$DEobject$te_res %>%
 
 geneVol <- volcano_plot(HmPtC1_resKZNFs)
 teVol <- volcano_plot(HmPtC1_resTE)
-gvol <- ggarrange(geneVol, teVol, ncol=1)
-ggsave(filename="figures/JPG/2B_volcano.jpg", dpi=500, width=4.5, height=10)
-ggsave(filename="figures/SVG/2B_volcano.svg", dpi=500, width=4.5, height=10)
-
-# Create split violin plot
+gvol <- ggarrange(geneVol, teVol, nrow=1)
+ggsave(filename="figures/JPG/2B_volcano.jpg", dpi=500, width=10, height=5)
+ggsave(filename="figures/SVG/2B_volcano.svg", dpi=500, width=10, height=5)

@@ -182,7 +182,7 @@ g2 <- ggplot(tsne_index, aes(x=`t-SNE1`, y=`t-SNE2`)) +
     labs(fill = "")
 
 ggsave(g2, filename="figures/SVG/2A_PBD_tSNE_region.svg",
-       dpi=400, width=7, height=5, bg="white")
+       dpi=400, width=9, height=5, bg="white")
 ggsave(g2, filename="figures/JPG/2A_PBD_tSNE_region.jpg",
-       dpi=400, width=7, height=5, bg="white")
+       dpi=400, width=9, height=5, bg="white")
 

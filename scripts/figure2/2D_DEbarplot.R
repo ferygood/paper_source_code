@@ -1,8 +1,9 @@
-# Figure 2D
-
 library(ComplexHeatmap)
 library(ggplot2)
 library(ggpubr)
+
+# import brain data
+read_rds_files("../../paper_source_code/data/results_rdata/")
 
 c1_kznfs <- unique(HmPtC1$corrRef$geneName) #285
 c1_kznfs_res <- HmPtC1$DEobject$gene_res %>%
@@ -117,5 +118,6 @@ gc2 <- ggplot(df_c5, aes(x=name, y=normalized_count, fill=age)) +
     ggtitle("Cerebellar White Matter") +
     theme_bw()
 
-gc <- ggarrange(gc1, gc2, ncol=1, common.legend = TRUE)
-ggsave(filename="figures/DE_KZNFS_TEs_percentage.jpg", gc, dpi=400, width=3, height=8)
+gc <- ggarrange(gc1, gc2, ncol=1, common.legend = TRUE, legend="bottom")
+ggsave(filename="figures/JPG/2D_DE_KZNFS_TEs_percentage.jpg", gc, dpi=400, width=3, height=8)
+ggsave(filename="figures/SVG/2D_DE_KZNFS_TEs_percentage.svg", gc, dpi=400, width=3, height=8)

@@ -1,5 +1,3 @@
-# Figure 2E Heatmap
-
 library(ComplexHeatmap)
 library(ggplot2)
 library(ggpubr)
@@ -32,7 +30,7 @@ c1_res_HmMm <- HmMmC1$HmMmC1_DE$gene_res %>%
 union_result <- union(union(rownames(select_kznfs), rownames(c1_res_HmPp)), rownames(c1_res_HmMm)) #53
 
 #5. load expression files
-df <- readRDS("~/github/pBrain/data/primateBrain_kznfTEexp.rds")
+df <- readRDS("~/Desktop/phd/pBrain/data/primateBrain_kznfTEexp.rds")
 
 df_select <- df %>%
     filter(region=="Primary & Secondary Cortices")
@@ -66,7 +64,7 @@ hm_specific_kznf <- rownames(result)
 df_heatmap_input_branch_hm <- df_heatmap_input_branch[hm_specific_kznf,]
 
 #6. plot kznfs heatmap
-png("figures/DE_ZNF_heatmap_all.jpg", width=6, height=13, units="in", res=1200)
+png("figures/JPG/2E_DE_ZNF_heatmap_all.jpg", width=6, height=13, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 13), rep("old", 23)),
     col = list(age = c("young"="#E59E00", "old"="#5A8FBB")),
@@ -146,7 +144,7 @@ df_heatmap_TE <- dfTE %>%
     arrange(desc(age))
 
 # plot TE heatmap
-png("figures/DE_TE_heatmap_all.jpg", width=6, height=13, units="in", res=1200)
+png("figures/JPG/2E_DE_TE_heatmap_all.jpg", width=6, height=13, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 6), rep("old", 12)),
     col = list(age = c("young"="#E59E00", "old"="#5A8FBB")),
