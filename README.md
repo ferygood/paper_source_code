@@ -4,7 +4,7 @@
 
 This repo including the analysis code in the paper, \_\_\_\_\_. You can refer to the script based on the description below.
 
-![](figures/ Graphical_Abstract_TEKRABber.png)
+![](figures/Graphical_Abstract_TEKRABber.png)
 
 ## preTEKRABber pipeline is provided
 
