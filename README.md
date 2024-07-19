@@ -4,6 +4,8 @@
 
 This repo including the analysis code in the paper, \_\_\_\_\_. You can refer to the script based on the description below.
 
+![](figures/ Graphical_Abstract_TEKRABber.png)
+
 ## preTEKRABber pipeline is provided
 
 We use [TEKRABber package](https://bioconductor.org/packages/release/bioc/html/TEKRABber.html) to analyze the one-to-one correlations (TE:KRAB-ZNF) from expression data. For obtaining our expression data, we first use a [preTEKRABber pipeline](https://github.com/ferygood/preTEKRABber_pipe), including: (1) using fastp to remove low quality reads and trimmed adapters (2) using STAR to align reads to reference genome (3) use TEtranscripts to quantify the expression of genes and transposable elements.
