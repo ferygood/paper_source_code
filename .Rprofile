@@ -1,3 +1,5 @@
+source("R/brain_meta.R")
+
 read_rds_files <- function(folder_path){
 
     file_list <- list.files(path = folder_path, pattern="\\.rds$", full.names = TRUE)
