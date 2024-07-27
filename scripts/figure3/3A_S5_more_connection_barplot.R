@@ -1,4 +1,4 @@
-# fig 3A
+# fig 3A and figure S5
 # check the 1000 iterations of KRAB-ZNFs (with random gene sets) to TEs
 
 library(dplyr)

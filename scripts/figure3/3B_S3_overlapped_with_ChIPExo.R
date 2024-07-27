@@ -1,5 +1,6 @@
-# fig 3B
-# From previous results, we know that only cluster1 and cluster2 have correlations detected.
+# fig 3B and figure S3
+# From previous results, we know that only primary and secondary cortices
+# and limbic and association cortices have correlations detected.
 # In this section, I am going to analyze the 1000 iterations result:
 # (1) check with pvalue (2) check the idea range of coefficient
 # (3) overlapped the results with ChIP-exo. Then we will finally get how many
