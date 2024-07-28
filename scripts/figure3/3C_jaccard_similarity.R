@@ -92,7 +92,7 @@ df_combine <- rbind(df_c1_simulation, df_c2_simulation)
 df_combine$simulation <- factor(df_combine$simulation,
                                 levels = c("Primary & Secondary Cortices",
                                            "Limbic & Association Cortices"))
-
+write.csv(df_combine, file="data/jaccard_simu_table.csv", row.names = F)
 
 g_statistic <- ggplot(df_combine, aes(x=simulation, y=Jaccard_similarity, fill=simulation)) +
     geom_boxplot(alpha=0.2) +
