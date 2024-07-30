@@ -7,8 +7,8 @@ library(ggpubr)
 library(Rtsne)
 data("hg38rmsk_info")
 data("hmKZNFs337")
-load("../../../data/mayo_cntTable/mayoTEKRABber_balance.RData")
-mayo_meta <- read.csv("../EDA/selectSample.csv")
+load("data/mayoTEKRABber_balance.RData")
+mayo_meta <- read.csv("data/selectSample.csv")
 
 cbeCtrlCorr <- mayoTEKRABber$cbeControlCorr
 cbeADCorr <- mayoTEKRABber$cbeADCorr
@@ -23,6 +23,7 @@ tcxDE <- mayoTEKRABber$tcxDE
 cbeGene <- data.frame(cbeDE$normalized_gene_counts)
 cbeKZNFs <- cbeGene %>% filter(rownames(cbeGene) %in% hmKZNFs337$ensembl_gene_id)
 dfCbeKZNFs <- data.frame(t(cbeKZNFs))
+rownames(dfCbeKZNFs) <- substr(rownames(dfCbeKZNFs), 2, 10000000)
 
 # TEs
 cbeTE <- data.frame(cbeDE$normalized_te_counts)
@@ -54,8 +55,8 @@ df_mayo <- bind_rows(dfCbe, dfTcx)
 # 4. add information of diagnosis
 df_mayo$name <- rownames(df_mayo)
 df_mayo_input <- df_mayo %>%
-    left_join(mayo_meta, join_by(name==name)) %>%
-    select(c(1:1379, 1382))
+    left_join(mayo_meta, join_by(name==name))
+    #select(c(1:1048))
 rownames(df_mayo_input) <- rownames(df_mayo)
 
 set.seed(42)
@@ -63,7 +64,7 @@ set.seed(42)
 df_mayo_noNA <- df_mayo_input %>% select_if(~ !any(is.na(.)))
 
 tsne <- Rtsne(
-    as.matrix(df_mayo_noNA[,c(1:1378)]),
+    as.matrix(df_mayo_noNA[,1:1048]),
     pca=TRUE,
     perplexity = 15,
     dims = 2
@@ -72,15 +73,15 @@ tsne <- Rtsne(
 # create results dataframe
 tsne_index <- data.frame(tsne$Y)
 rownames(tsne_index) <- rownames(df_mayo_input)
-tsne_index$diagnosis <- df_mayo_noNA$diagnosis
-colnames(tsne_index)[c(1,2)] <- c("tSNE1", "tSNE2")
+tsne_index$diagnosis <- df_mayo_input$diagnosis
+colnames(tsne_index)[c(1,2)] <- c("t-SNE1", "t-SNE2")
 
-g1 <- ggplot(tsne_index, aes(x=tSNE1, y=tSNE2)) +
+g1 <- ggplot(tsne_index, aes(x=`t-SNE1`, y=`t-SNE2`)) +
     geom_point(colour="black", shape=21, size=3,
                aes(fill=factor(diagnosis))) +
-    scale_fill_manual(values=c("#FFCC66", "#6699FF", "#99CC99", "#CC99FF")) +
+    scale_fill_manual(values=c("#f96161", "#d0b783", "#99CC99", "#CC99FF")) +
     labs(fill = "diagnosis") +
-    geom_text(label=rownames(tsne_index), size=1.5) +
+    #geom_text(label=rownames(tsne_index), size=1.5) +
     theme_bw()
-ggsave(g1, filename="figures/kznfsTEsTSNE_removed7095.jpg", dpi=400,
+ggsave(g1, filename="figures/JPG/5A_kznfsTEsTSNE.jpg", dpi=400,
        width=5, height=3, bg="white")

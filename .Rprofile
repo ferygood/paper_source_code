@@ -1,4 +1,5 @@
 source("R/brain_meta.R")
+source("R/load_init_data.R")
 
 read_rds_files <- function(folder_path){
 

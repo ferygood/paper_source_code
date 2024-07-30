@@ -38,7 +38,7 @@ kznf_cortex$species <-
 kznf_cortex_v <- ggplot(kznf_cortex, aes(x=species, y=value, fill=age)) +
     introdataviz::geom_split_violin(alpha=.8)+
     geom_boxplot(width = .2, alpha = .6, show.legend = FALSE) +
-    stat_compare_means(label = "p.signif", label.x=1.5, method="wilcox.test", size=8) +
+    stat_compare_means(label = "p.signif", label.x=1.5, label.y=8.5, method="wilcox.test", size=8) +
     scale_fill_manual(values = c("#5A8FBB", "#E59E00")) +
     labs(fill="evolutionary age") +
     theme_bw() +
@@ -54,7 +54,8 @@ kznf_cortex_v <- ggplot(kznf_cortex, aes(x=species, y=value, fill=age)) +
         axis.text.y = element_text(size = 20),     # Y ticks
         legend.title = element_text(size = 20),
         legend.text = element_text(size = 14)
-    )
+    ) +
+    scale_y_continuous(limits = c(0,9))
 
 te_cortex <- te_exp_longer %>% filter(region=="Primary & Secondary Cortices")
 te_cortex <- te_cortex %>% filter(value>0)
@@ -65,7 +66,7 @@ te_cortex$species <-
 te_cortex_v <- ggplot(te_cortex, aes(x=species, y=value, fill=age)) +
     introdataviz::geom_split_violin(alpha=.8)+
     geom_boxplot(width = .2, alpha = .6, show.legend = FALSE) +
-    stat_compare_means(label = "p.signif", label.x=1.5, method="wilcox.test", size=8) +
+    stat_compare_means(label = "p.signif", label.x=1.5, label.y=12.5, method="wilcox.test", size=8) +
     scale_fill_manual(values = c("#5A8FBB", "#E59E00")) +
     labs(fill="evolutionary age") +
     theme_bw() +
@@ -80,11 +81,12 @@ te_cortex_v <- ggplot(te_cortex, aes(x=species, y=value, fill=age)) +
         axis.text.x = element_text(size = 20),     # X ticks
         axis.text.y = element_text(size = 20),     # Y ticks
         legend.title = element_text(size = 20),
-        legend.text = element_text(size = 14)      #
-    )
+        legend.text = element_text(size = 14)
+    ) +
+    scale_y_continuous(limits = c(0, 13))
 
 cortex <- ggarrange(kznf_cortex_v, te_cortex_v, ncol=1,
                     common.legend = TRUE, legend = "bottom")
 
-ggsave(filename="figures/JPG/2C_kznfs_TEs_violin_cortex.jpg", dpi=500, width=10, height=15)
+ggsave(filename="figures/JPG/2C_kznfs_TEs_violin_cortex.jpg", dpi=500, width=8, height=10)
 ggsave(filename="figures/SVG/2C_kznfs_TEs_violin_cortex.svg", dpi=500, width=8, height=10)

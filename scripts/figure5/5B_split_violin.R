@@ -1,22 +1,16 @@
 #5B
 library(twice)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(ggpubr)
 
-load("/path/to/mayoTEKRABber_balance.RData")
-kznf_age_infer <- read.csv("/path/to/hmKZNFs337_ageInfer.csv")
-te_infer <- read.csv("/path/to/Dfam_TE_simiiformes.csv")
-
+load("data/mayoTEKRABber_balance.RData")
 
 # cerebellum expression data load
-cbe_gene <- mayoTEKRABber$cbeDE$normalized_gene_counts %>%
-    data.frame()
-cbe_kznfs <- cbe_gene[kznf_age_infer$external_gene_name, ]
-
-cbe_TE <- mayoTEKRABber$cbeDE$normalized_te_counts %>%
-    data.frame()
-
+cbe_gene <- mayoTEKRABber$cbeDE$normalized_gene_counts %>% data.frame()
+cbe_kznfs <- cbe_gene[kznf_infer$external_gene_name, ]
+cbe_TE <- mayoTEKRABber$cbeDE$normalized_te_counts %>% data.frame()
 
 cbe_kznfs <- data.frame(t(cbe_kznfs))
 
@@ -65,12 +59,9 @@ cbe_TE <- ggviolin(df_cbe_TE, x="age", y="expression", fill="age",
     facet_wrap(~group)
 
 # load expression files
-tcx_gene <- mayoTEKRABber$tcxDE$normalized_gene_counts %>%
-    data.frame()
-tcx_kznfs <- tcx_gene[kznf_age_infer$external_gene_name, ]
-
-tcx_TE <- mayoTEKRABber$tcxDE$normalized_te_counts %>%
-    data.frame()
+tcx_gene <- mayoTEKRABber$tcxDE$normalized_gene_counts %>% data.frame()
+tcx_kznfs <- tcx_gene[kznf_infer$external_gene_name, ]
+tcx_TE <- mayoTEKRABber$tcxDE$normalized_te_counts %>% data.frame()
 
 # select kznfs
 tcx_kznfs <- data.frame(t(tcx_kznfs))
@@ -141,15 +132,25 @@ tcx_v <- ggplot(df_tcx, aes(x=group, y=expression, fill=age)) +
     introdataviz::geom_split_violin(alpha=.8)+
     geom_boxplot(width = .2, alpha = .6, show.legend = FALSE) +
     facet_wrap(vars(type)) +
-    stat_compare_means(label = "p.signif", label.x=1.5, method="wilcox.test") +
+    stat_compare_means(label = "p.signif", label.x=1.5, label.y=12.4, method="wilcox.test", size=8) +
     scale_fill_manual(values = c("#5A8FBB", "#E59E00")) +
     labs(fill="evolutionary age") +
     theme_bw() +
     rotate_x_text(angle = 20) +
     xlab("") +
     ylab("logExp.") +
-    ggtitle("Expression in temporal cortex") +
-    theme(text = element_text(size = 16))
+    ggtitle("Temporal Cortex") +
+    theme(
+        plot.title = element_text(size = 20),      # title
+        axis.title.x = element_text(size = 16),    # X axis
+        axis.title.y = element_text(size = 16),    # Y axis
+        axis.text.x = element_text(size = 20),     # X ticks
+        axis.text.y = element_text(size = 20),     # Y ticks
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 14),
+        strip.text = element_text(size=15)
+    ) +
+    scale_y_continuous(limits=c(0, 14))
 
 df_cbe_kznfs_select <- df_cbe_kznfs %>%
     select(c(1,3,4)) %>%
@@ -169,14 +170,25 @@ cbe_v <- ggplot(df_cbe, aes(x=group, y=expression, fill=age)) +
     introdataviz::geom_split_violin(alpha=.8)+
     geom_boxplot(width = .2, alpha = .6, show.legend = FALSE) +
     facet_wrap(vars(type)) +
-    stat_compare_means(label = "p.signif", label.x=1.5, method="wilcox.test") +
+    stat_compare_means(label = "p.signif", label.x=1.5, label.y=12.4, method="wilcox.test", size=8) +
     scale_fill_manual(values = c("#5A8FBB", "#E59E00")) +
     labs(fill="evolutionary age") +
     theme_bw() +
     rotate_x_text(angle = 20) +
     xlab("") +
     ylab("logExp.") +
-    ggtitle("Expression in cerebellum") +
-    theme(text = element_text(size = 16))
+    ggtitle("Cerebellum") +
+    theme(
+        plot.title = element_text(size = 20),      # title
+        axis.title.x = element_text(size = 16),    # X axis
+        axis.title.y = element_text(size = 16),    # Y axis
+        axis.text.x = element_text(size = 20),     # X ticks
+        axis.text.y = element_text(size = 20),     # Y ticks
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 14),
+        strip.text = element_text(size=15)
+    ) +
+    scale_y_continuous(limits=c(0, 14))
 
 g_split <- ggarrange(tcx_v, cbe_v, ncol=1, nrow=2, common.legend = TRUE, legend="bottom")
+ggsave(g_split, filename="figures/JPG/5B_split_violin_mayo.jpg", dpi=400, width=8, height=8)
