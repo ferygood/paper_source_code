@@ -1,8 +1,9 @@
-# Paper title
+# Source Code
 
 ![](https://img.shields.io/badge/r-%23276DC3.svg?style=plastic&logo=r&logoColor=white)
 
-This repo including the analysis code in the paper, \_\_\_\_\_. You can refer to the script based on the description below.
+This repo including the analysis code in the paper, Regulatory networks of KRAB zinc finger genes and transposable elements changed during human brain evolution and disease (DOI: 10.1101/2023.12.18.569574). 
+You can refer to the script based on the description below.
 
 ![](figures/Graphical_Abstract_TEKRABber.png)
 
@@ -31,5 +32,5 @@ Two independent RNA-seq dataset were used in this study.
 All scripts are manage in the `scripts` folder. You can view the script by navigating the name of the figure. For example, if you are looking for the code for Figure 2A in the scientific paper, you can find it in `scripts/figure2/2A_tSNE.R`.
 
 ## Contact
-
-Email: [yao-chung.chen\@fu-berlin.de](mailto:yao-chung.chen@fu-berlin.de){.email}
+We try to provide the source code as detailed as we can. If you have any questions, please contact me using the email below.
+Email: [yao-chung.chen\@fu-berlin.de](mailto:yao-chung.chen@fu-berlin.de)

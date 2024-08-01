@@ -9,7 +9,6 @@ load("data/mayoTEKRABber_balance.RData")
 kznf_infer <- utils::read.csv("data/kznf_bucket.csv")
 te_infer <- utils::read.csv("data/Dfam_TE_simiiformes.csv", row.names = 1)
 
-detach("package:dplyr", unload=TRUE)
 library(dplyr)
 conflicted::conflict_prefer("filter", "dplyr")
 
