@@ -573,11 +573,6 @@ g_p_specific <- ggplot(df_pp_merge_norm, aes(x=coef, y=teFamily)) +
 
 ggsave(g_p_specific, file="../figures/pbd_pp_specific_link_TEfamilyCount.jpg", dpi=400, width=4)
 
-From the results, we could also find that bonobo has similar pattern as human, for example, all the correlation are young links and they are contributed from the young KRAB-ZNFs with old TEs.
-
-Next, we go for the chimpanzee and macaque
-
-
 ptc1 <- pbd_obj$ptc1_corr %>%
     filter(!pair %in% pbd_obj$hmc1_corr$pair) %>%
     filter(!pair %in% pbd_obj$ppc1_corr$pair) %>%
