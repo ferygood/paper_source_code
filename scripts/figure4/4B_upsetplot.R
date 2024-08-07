@@ -150,6 +150,13 @@ overlapped_kznfs <- Reduce(intersect, list(h_kznf, pt_kznf, pp_kznf, mm_kznf)) #
 overlapped_TEs <- Reduce(intersect, list(rownames(hmTE_tpm), rownames(ptTE_tpm),
                                          rownames(ppTE_tpm), rownames(mmTE_tpm))) #836 overlapped TEs
 
+pbd_kznfs_tes_overlap <- list(
+    overlapped_kznfs = overlapped_kznfs,
+    overlapped_TEs = overlapped_TEs
+)
+
+saveRDS(pbd_kznfs_tes_overlap, file = "data/pbd_kznfs_tes_overlap.rds")
+
 # we first get the cluster1 and cluster2 ID in each species
 hmc1_id <- df_meta %>% filter(cluster=="cluster1" & Organism=="Homo sapiens")
 hmc2_id <- df_meta %>% filter(cluster=="cluster2" & Organism=="Homo sapiens")
