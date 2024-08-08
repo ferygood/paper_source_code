@@ -36,13 +36,12 @@ cbe_exp_kznfs <- mayoTEKRABber$cbeDE$normalized_gene_counts %>%
                            "young", "old")) %>%
     arrange(desc(branch))
 
-png("figures/tcx_kznfs_heatmap.jpg", width=6, height=10, units="in", res=1200)
+png("figures/JPG/5C_tcx_kznfs_heatmap.jpg", width=6, height=10, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 2), rep("old", 4)),
     col = list(age = c("young" = "#E59E00", "old" = "#5A8FBB")),
     show_annotation_name = FALSE
 )
-
 
 tcx_kznfs_heatmap <- ComplexHeatmap::Heatmap(
     log(tcx_exp_kznfs[,c(1,2)] + 1),
@@ -62,7 +61,7 @@ tcx_kznfs_heatmap <- ComplexHeatmap::Heatmap(
 tcx_kznfs_heatmap
 dev.off()
 
-png("figures/cbe_kznfs_heatmap.jpg", width=6, height=10, units="in", res=1200)
+png("figures/JPG/5D_cbe_kznfs_heatmap.jpg", width=6, height=10, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 8), rep("old", 6)),
     col = list(age = c("young" = "#E59E00", "old" = "#5A8FBB")),
@@ -118,7 +117,7 @@ cbe_exp_TEs <- mayoTEKRABber$cbeDE$normalized_te_counts %>%
                            "young", "old")) %>%
     arrange(desc(branch))
 
-png("figures/tcx_TEs_heatmap.jpg", width=6, height=10, units="in", res=1200)
+png("figures/JPG/5C_tcx_TEs_heatmap.jpg", width=6, height=10, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 5), rep("old", 5)),
     col = list(age = c("young" = "#E59E00", "old" = "#5A8FBB")),
@@ -142,8 +141,7 @@ tcx_TEs_heatmap <- ComplexHeatmap::Heatmap(
 tcx_TEs_heatmap
 dev.off()
 
-png("figures/cbe_TEs_heatmap.jpg", width=6, height=10, units="in", res=1200)
-
+png("figures/JPG/5D_cbe_TEs_heatmap.jpg", width=6, height=10, units="in", res=1200)
 age_ha <- rowAnnotation(
     age = c(rep("young", 2), rep("old", 5)),
     col = list(age = c("young" = "#E59E00", "old" = "#5A8FBB")),
@@ -166,3 +164,4 @@ cbe_TEs_heatmap <- ComplexHeatmap::Heatmap(
 )
 
 cbe_TEs_heatmap
+dev.off()

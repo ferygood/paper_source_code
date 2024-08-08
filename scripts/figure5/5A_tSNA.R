@@ -1,6 +1,3 @@
-# 5A
-# tSNE variation in Figure 5.
-
 library(twice)
 library(dplyr)
 library(ggpubr)
